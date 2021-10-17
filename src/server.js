@@ -1,15 +1,15 @@
 import express from 'express'
-import { mapOrder } from '*/utilities/sorts'
+import { connectDB } from '*/config/mongodb'
+import { env } from '*/config/environtment'
 
 const app = express()
 
-const hostName = 'localhost'
-const port = 8080
+connectDB().catch(console.log)
 
 app.get('/', (req, res) => {
     res.end('<h1>Hello world!</h1>')
 })
 
-app.listen(port, hostName, () => {
-    console.log(`Trello clone app, running at port http://${hostName}:${port}/`)
+app.listen(env.PORT, env.HOST, () => {
+    console.log(`Trello clone app, running at port http://${env.HOST}:${env.PORT}/`)
 })
