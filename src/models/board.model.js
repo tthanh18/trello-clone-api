@@ -24,7 +24,7 @@ const createNew = async(data) => {
         const ops =  await getDB().collection(boardCollectionName).findOne(result.insertedId)
         return ops
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 }
 
