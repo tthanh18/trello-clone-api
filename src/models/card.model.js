@@ -23,10 +23,10 @@ const createNew = async(data) => {
     try {
         const value = await validateSchema(data)
         const result = await getDB().collection(cardCollectionName).insertOne(value)
-        const ops =  await getDB().collection(boardCollectionName).findOne(result.insertedId)
+        const ops =  await getDB().collection(cardCollectionName).findOne(result.insertedId)
         return ops
     } catch (error) {
-        console.log(error)
+        throw new Error(error)
     }
 }
 
