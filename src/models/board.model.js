@@ -52,7 +52,10 @@ const pushColumnOrder = async (boardId, columnId) => {
 const getFullBoard = async (id) => {
     try {
         const result = await getDB().collection(boardCollectionName).aggregate([
-            { $match: {_id: ObjectId(id) } },
+            { $match: {
+                _id: ObjectId(id),
+                _destroy: false
+            } },
             { $lookup: {
                 from: ColumnModel.columnCollectionName,
                 localField: '_id',
