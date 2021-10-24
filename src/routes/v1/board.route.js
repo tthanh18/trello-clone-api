@@ -11,4 +11,4 @@ router.route('/')
 router.route('/:id')
     .get(BoardController.getFullBoard)
 
-export const boardRoutes = router
+export const boardRoutes = router   
